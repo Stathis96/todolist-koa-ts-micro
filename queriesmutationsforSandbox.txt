@@ -1,0 +1,112 @@
+{
+  getLists {
+    id
+    title
+    slug
+    type
+    capacity
+    tasks {
+      id 
+      name
+      type
+      done
+    }
+      # owner {
+      #   id
+      #   name
+      #   email
+      # }
+  }
+}
+
+{
+  getCompletedLists{
+    id
+    slug
+    title
+    tasks {
+      id
+
+    }
+  }
+}
+
+
+{
+  getList(id: "d3bf2649-73ac-4b61-b259-ec9224830fa5"){
+    id
+    capacity
+    owner {
+      name
+      email
+    }
+  }
+}
+
+mutation {
+  createList(data: { slug: "CRTCXdS",title: "TRITOLIST", type: "personal" ,capacity: 10 }) {
+    id
+    slug
+    title
+    capacity
+    type
+    owner {
+      id
+      name
+    }
+  }
+}
+
+
+
+
+mutation {
+  updateList(id:"7257a294-f759-44f7-8ed7-7aba16426696", data: {owner_id:"toidmou",slug:"updatedslug",title:"updatedLIST", type:"fun",capacity:10}){
+    id
+    title
+    slug
+  }
+}
+
+mutation {
+  deleteList(id: "e0b3f530-c7ed-4679-8855-4bbb36fb09db")
+
+}
+
+mutation {
+  cloneList(id: "e0b3f530-c7ed-4679-8855-4bbb36fb09db"){
+    id
+    capacity
+    slug
+    title
+    tasks {
+      done
+      id
+      name
+    }
+  }
+}
+
+
+
+mutation {
+  createTask(data: { name: "Deuterotoask", type: "personal", list_id: "5157cd3f-9174-435d-bb6a-de58a5952aa4"}){
+    id
+    name
+    done
+    type
+  }
+}
+
+mutation {
+  deleteTask(id: "fff787d3-c57b-402a-b925-f5d308186af5")  
+}
+
+mutation {
+  updateTask(id: "bab86059-2a33-41a0-9048-3237c8690688", data: {list_id:"7257a294-f759-44f7-8ed7-7aba16426696",done:true,name:"newname",type:"fun"}){
+    id
+    name
+    done
+    type
+  }
+}
